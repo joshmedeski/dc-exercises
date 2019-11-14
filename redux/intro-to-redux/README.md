@@ -12,3 +12,5 @@ Create a basic incremental counter using vanilla JavaScript and Redux.
 - Render the page on page load
 - Render the page on a redux store subscribe, so the page updates every time the value changes
 - Dispatch actions when the buttons are pressed
+
+See `counter-start.html` for a helpful starting point to build the reducer, store, and actions. See `counter-solution.html` for a working solution.
