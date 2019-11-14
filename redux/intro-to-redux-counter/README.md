@@ -1,6 +1,4 @@
-# Intro to Redux Exercises
-
-## Counter Exercise
+# Intro to Redux Exercise - Counter
 
 Create a basic incremental counter using vanilla JavaScript and Redux.
 
