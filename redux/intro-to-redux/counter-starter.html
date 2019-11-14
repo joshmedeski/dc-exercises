@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Redux Exercise - Counter</title>
+    <!-- Import the Redux library -->
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body style="margin: 50px;">
+    <h1>Intro to Redux Exercise - Counter</h1>
+    <!-- Assign an id to the state value so we can re-render after it changes -->
+    <h2>Clicked: <span id="value">0</span> times</h2>
+    <!-- Assign ids to the elements so we can add listeners with JS -->
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button id="incrementIfOdd">Increment if odd</button>
+    <button id="incrementAsync">Increment async</button>
+    <script>
+      // Create the state, which is a single number
+      function reducer(state, action) {
+        // Set a default value (using ES5, if "undefined")
+        // Create switch case for action type that returns the new state
+        // 'INCREMENT' adds one to current value
+        // 'DECREMENT' subtracts one from current value
+        // Default returns current state
+      }
+
+      // Create the store using Redux.createStore()
+
+      // Create a render function to display state on the page
+      // Render on page load
+      // Render every time store changes
+
+      document
+        .getElementById("increment")
+        .addEventListener("click", function() {
+          // Dispatch the "INCREMENT" action type
+        });
+
+      document
+        .getElementById("decrement")
+        .addEventListener("click", function() {
+          // Dispatch the "DECREMENT" action type
+        });
+
+      document
+        .getElementById("incrementIfOdd")
+        .addEventListener("click", function() {
+          // Dispatch the "INCREMENT" action type, only if the current state is
+          // an odd number (use "store.getState()" to get the current value)
+          if (store.getState() % 2 !== 0) {
+            store.dispatch({ type: "INCREMENT" });
+          }
+        });
+
+      document
+        .getElementById("incrementAsync")
+        .addEventListener("click", function() {
+          // Dispatch the "INCREMENT" action type from inside a "setTimeout"
+        });
+    </script>
+  </body>
+</html>

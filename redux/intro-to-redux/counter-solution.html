@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Redux Exercise - Counter</title>
+    <!-- Import the Redux library -->
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body style="margin: 50px;">
+    <h1>Intro to Redux Exercise - Counter</h1>
+    <!-- Assign an id to the state value so we can re-render after it changes -->
+    <h2>Clicked: <span id="value">0</span> times</h2>
+    <!-- Assign ids to the elements so we can add listeners with JS -->
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button id="incrementIfOdd">Increment if odd</button>
+    <button id="incrementAsync">Increment async</button>
+    <script>
+      // Create the state, which is a single number
+      function reducer(state, action) {
+        // Set a default value (using ES5)
+        if (typeof state === "undefined") {
+          return 0;
+        }
+
+        // Create switch case for action type
+        switch (action.type) {
+          case "INCREMENT":
+            return state + 1;
+          case "DECREMENT":
+            return state - 1;
+          default:
+            return state;
+        }
+      }
+
+      // Create the store
+      var store = Redux.createStore(reducer);
+
+      // Create a render function to display state on the page
+      function render() {
+        document.getElementById(
+          "value"
+        ).innerHTML = store.getState().toString();
+      }
+
+      // Render on page load
+      render();
+      // Render every time store changes
+      store.subscribe(render);
+
+      // Bind dispatch actions to buttons
+      document
+        .getElementById("increment")
+        .addEventListener("click", function() {
+          store.dispatch({ type: "INCREMENT" });
+        });
+
+      document
+        .getElementById("decrement")
+        .addEventListener("click", function() {
+          store.dispatch({ type: "DECREMENT" });
+        });
+
+      document
+        .getElementById("incrementIfOdd")
+        .addEventListener("click", function() {
+          // Notice the logic is on the event listener, not inside the reducer
+          if (store.getState() % 2 !== 0) {
+            store.dispatch({ type: "INCREMENT" });
+          }
+        });
+
+      document
+        .getElementById("incrementAsync")
+        .addEventListener("click", function() {
+          // Redux can handle async functions too since we're rendering
+          // the output with the "store.subscribe" and not directly on
+          // the event listener
+          setTimeout(function() {
+            store.dispatch({ type: "INCREMENT" });
+          }, 1000);
+        });
+    </script>
+  </body>
+</html>
