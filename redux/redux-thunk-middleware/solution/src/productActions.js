@@ -5,18 +5,9 @@ function fakeGetProducts() {
       () =>
         resolve({
           products: [
-            {
-              id: 0,
-              name: "Apple"
-            },
-            {
-              id: 1,
-              name: "Bananas"
-            },
-            {
-              id: 2,
-              name: "Strawberries"
-            }
+            { id: 0, name: "Apple" },
+            { id: 1, name: "Bananas" },
+            { id: 2, name: "Strawberries" }
           ]
         }),
       1000
